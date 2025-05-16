@@ -1,18 +1,21 @@
 {% extends 'hospital/homebase.html' %}
+
 {% block content %}
 
-<br>
-<br>
+<br><br>
 
-<div class="jumbotron" style="margin-bottom:0px;">
-  <h1 class="display-4" style="text-align:center;">Hello, Doctor</h1>
-  <p class="lead">Welcome to Hospital Management System.</p>
-  <hr class="my-4">
-  <p>You can access various features after Login/SignUp.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/doctorsignup" role="button">Apply</a>
-    <a class="btn btn-primary btn-lg" href="/doctorlogin" role="button">Login</a>
-  </p>
+<!-- Jumbotron Section -->
+<div class="jumbotron" style="background-color: #f8f9fa; padding: 60px 30px; border-radius: 10px; margin-bottom: 0px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+  <h1 class="display-4" style="text-align: center; font-size: 3rem; font-weight: 700; color: #343a40;">Hello, Doctor</h1>
+  <p class="lead" style="text-align: center; font-size: 1.2rem; color: #6c757d;">Welcome to the Hospital Management System.</p>
+  <hr class="my-4" style="border-color: #dee2e6;">
+  <p style="text-align: center; font-size: 1.1rem; color: #6c757d;">You can access various features after Login/SignUp.</p>
+  
+  <!-- Buttons Section -->
+  <div class="text-center">
+    <a class="btn btn-primary btn-lg mx-3" href="/doctorsignup" role="button" style="padding: 12px 30px; font-size: 1.2rem; border-radius: 25px;">Apply</a>
+    <a class="btn btn-primary btn-lg mx-3" href="/doctorlogin" role="button" style="padding: 12px 30px; font-size: 1.2rem; border-radius: 25px;">Login</a>
+  </div>
 </div>
 
 {% endblock content %}

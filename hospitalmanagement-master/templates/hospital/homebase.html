@@ -3,15 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Python Project</title>
-
+  <title>Hospital Management</title>
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
   {% include "hospital/navbar.html" %}
-  {%block content%}
+  
+  <!-- Main content section -->
+  <main style="flex-grow: 1;">
+    {% block content %}
+    {% endblock content %}
+  </main>
 
-  {%endblock content%}
   {% include "hospital/footer.html" %}
 </body>
 

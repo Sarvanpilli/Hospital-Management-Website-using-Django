@@ -4,6 +4,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -11,48 +12,100 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <style type="text/css">
-    .bs-example {
-      margin: 0px;
-
+    .navbar-custom {
+      background-color: #337AB7;
     }
 
     .navbar-brand {
-      font-size: 20px;
-      font-family: sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
 
+    /* Navbar link styles */
+    .navbar-nav .nav-item .nav-link {
+      color: white;
+      font-size: 18px;
+      position: relative; /* To position pseudo-elements */
+      padding: 10px 0; /* Adjusting padding for the effect */
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover effect */
+    .navbar-nav .nav-item .nav-link:hover {
+      color: #FFD700; /* Hover text color */
+    }
+
+    .navbar-nav .nav-item .nav-link:before,
+    .navbar-nav .nav-item .nav-link:after {
+      content: '';
+      position: absolute;
+      transition: 0.3s;
+      width: 100%;
+      height: 2px;
+      background-color: #FFD700; /* Animation color */
+    }
+
+    .navbar-nav .nav-item .nav-link:before {
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .navbar-nav .nav-item .nav-link:after {
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    .navbar-nav .nav-item .nav-link:hover:before,
+    .navbar-nav .nav-item .nav-link:hover:after {
+      transform: scaleX(1);
+    }
+
+    /* Toggler icon color */
+    .navbar-toggler-icon {
+      background-color: white;
+    }
+
+    body {
+      padding-top: 70px; /* Prevent content from hiding under the navbar */
     }
   </style>
 </head>
 
 <body>
 
-
-
+  <!-- Navbar -->
   <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#337AB7;">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-custom">
       <a href="/" class="navbar-brand">Hospital Management</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-        <div class="navbar-nav">
-
-          <a href="/adminclick" class="nav-item nav-link">Admin</a>
-          <a href="/doctorclick" class="nav-item nav-link">Doctor</a>
-          <a href="/patientclick" class="nav-item nav-link">Patient</a>
-
-
-        </div>
-
-        <div class="navbar-nav">
-          <a href="/aboutus" class="nav-item nav-link">About Us</a>
-          <a href="/contactus" class="nav-item nav-link">Contact Us</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3">
+      <a href="/adminclick" class="nav-link">Admin</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a href="/doctorclick" class="nav-link">Doctor</a>
+      </li>
+      <li class="nav-item">
+        <a href="/patientclick" class="nav-link">Patient</a>
+      </li>
+</ul>
 
       </div>
     </nav>
   </div>
+
 </body>
 
 </html>

@@ -2,43 +2,101 @@
 {% load static %}
 {% block content %}
 <head>
-  <style media="screen">
-    .jumbotron {
-      margin-top: 0px;
-      margin-bottom: 0px;
-      background-image: url('{% static "images/bg.png" %}');
-      background-size: cover;
-      background-repeat: no-repeat;
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fff;
+      overflow-x: hidden;
     }
 
-    .jumbotron h5,
-    h3 {
+    /* Hero Section - Just background image and title */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('{% static "images/bg.jpg" %}') top center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: white;
     }
 
-    .alert {
-      margin: 0px;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Appointments Section */
+    .appointments-section {
+      padding: 80px 20px;
+      background-color: #F0F4F8;
+    }
+
+    .appointments-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .btn-appointment {
+      background-color: #2F80ED; /* Solid blue */
+      color: #ffffff; /* White text initially */
+      padding: 14px 36px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-appointment:hover {
+      background-color: #1c60d3; /* Slightly darker blue */
+      color: #000000; /* Black text on hover */
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-container {
+      max-width: 1100px;
+      margin: 0 auto;
     }
   </style>
+
+  <!-- AOS Animation Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
-<br>
-<br>
+<!-- Hero Section -->
+<div class="hero" data-aos="fade-in" data-aos-duration="1500"></div>
 
-<div class="jumbotron" style="margin-bottom: 0px; margin-top: 0px;">
-  <br>
-  <br><br><br><br><br>
-  <div class="text-center" style="margin-top: 40px;"> 
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/patientclick" role="button">Take Appointment</a>
-    </p>
+<!-- Appointment Section -->
+<div class="appointments-section">
+  <h2 data-aos="fade-up" data-aos-delay="100">Book Your Appointment</h2>
+  <div class="text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
+    <a href="/patientclick" class="btn-appointment">Schedule Now</a>
   </div>
-  <br><br>
+  <div class="card-container" data-aos="fade-up" data-aos-delay="300">
+    {% include "hospital/admin_doctor_patient_card.html" %}
+  </div>
 </div>
 
-<br><br><br><br>
-
-{% include "hospital/admin_doctor_patient_card.html" %}
-<br><br><br>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      once: false, // Allow animation to trigger multiple times when scrolling up and down
+      offset: 200,  // Optional: Adjust when the animation triggers, based on scroll distance
+    });
+  });
+</script>
 
 {% endblock content %}

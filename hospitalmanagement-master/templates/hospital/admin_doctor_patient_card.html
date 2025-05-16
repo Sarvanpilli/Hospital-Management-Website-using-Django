@@ -1,93 +1,118 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Cards</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      max-width: 300px;
-      margin: auto;
-      text-align: center;
-      font-family: arial;
-    }
-
-    .title {
-      color: grey;
-      font-size: 18px;
-    }
-
-    button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #000;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      font-size: 18px;
-    }
-
-    button:hover,
-    a:hover {
-      opacity: 0.7;
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8ff;
+      margin: 0;
+      padding: 0;
     }
 
     .grid-container {
       display: grid;
-      grid-template-columns: auto auto auto;
-      padding: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 50px;
+      justify-items: center;
     }
 
-    a:link {
-      text-decoration: none;
-    }
-
-    a {
+    .card {
+      background: linear-gradient(135deg, #66a3ff, #0059b3);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 280px;
+      text-align: center;
       color: white;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      border-bottom: 4px solid #004c99;
+    }
+
+    .card .title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #f2f2f2;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #d8d8d8;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      background-color: #004c99;
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #003366;
+    }
+
+    a:link,
+    a:visited {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
 
 <body>
 
-
-
   <div class="grid-container">
     <div class="grid-item">
       <div class="card">
-        <img src="/static/images/admin.jpg" alt="Admin Image" style="width:100%">
+        <img src="/static/images/admin.jpg" alt="Admin Image">
         <p class="title">ADMIN</p>
         <p><button><a href="/adminclick">View</a></button></p>
       </div>
-
     </div>
 
     <div class="grid-item">
       <div class="card">
-        <img src="/static/images/doctor.jpg" alt="John" style="width:100%">
+        <img src="/static/images/doctor.jpg" alt="Doctor Image">
         <p class="title">DOCTOR</p>
         <p><button><a href="/doctorclick">View</a></button></p>
       </div>
-    </div>    
+    </div>
 
     <div class="grid-item">
       <div class="card">
-        <img src="/static/images/patient.jpg" alt="John" style="width:100%">
+        <img src="/static/images/patient.jpg" alt="Patient Image">
         <p class="title">PATIENT</p>
         <p><button><a href="/patientclick">View</a></button></p>
       </div>
     </div>
-
   </div>
-  <!--
-  developed By : sumit kumar
-  facebook : fb.com/sumit.luv
-  youtube : youtube.com/lazycoders
-  -->
 
 </body>
 
