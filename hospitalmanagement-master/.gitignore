@@ -114,3 +114,47 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+
+# OS specific files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Database backups #
+*.sql
+*.sqlite
+*.db
+
+# Large binary files #
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.iso
+
+# Compiled files #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Static files collected #
+staticfiles/
+static_root/
+
+# Media files uploaded by users #
+media/
+profile_pic/
+
+# Secret configuration #
+secrets.json
+.env.local
+.env.production
