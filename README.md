@@ -302,11 +302,6 @@ Contributions are welcome! Please follow these steps:
 
 This project is open source and available for educational purposes.
 
-## 👨‍💻 Developer
-
-Original Developer: Sumit Kumar
-- Facebook: fb.com/sumit.luv
-- YouTube: youtube.com/lazycoders
 
 ## 🙏 Acknowledgments
 
