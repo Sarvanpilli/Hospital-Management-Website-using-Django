@@ -3,229 +3,274 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Dashboard Cards</title>
+
+  <!-- Google Fonts: Poppins and Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS (v3.4.1) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style media="screen">
+    /* --- CSS Custom Properties for Theming --- */
+    :root {
+      --font-primary: 'Poppins', sans-serif;
+      --font-secondary: 'Roboto', sans-serif;
+
+      --color-bg: #f0f2f5; /* Light grey background */
+      --card-bg: #ffffff; /* White card background */
+      
+      --text-color-dark: #2c3e50; /* Dark blue-grey for main text */
+      --text-label-color: #7f8c8d; /* Lighter grey for labels */
+
+      --accent-color-1: #3498db; /* Vivid Blue */
+      --accent-color-1-dark: #2980b9;
+      --accent-color-2: #2ecc71; /* Emerald Green */
+      --accent-color-2-dark: #27ae60;
+      --accent-color-3: #e74c3c; /* Alizarin Red/Orange */
+      --accent-color-3-dark: #c0392b;
+
+      --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.07);
+      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+      --border-radius-md: 12px;
+      --border-radius-lg: 16px;
+    }
+
+    /* --- Global Styles & Body --- */
+    body {
+      font-family: var(--font-secondary);
+      background-color: var(--color-bg);
+      /* Subtle gradient background for a bit of depth */
+      background-image: radial-gradient(circle at top left, #e0e6ef, var(--color-bg) 60%);
+      color: var(--text-color-dark);
+      margin: 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Using Bootstrap's container for centered content, or container-fluid for full width */
+    /* .container or .container-fluid already handled by Bootstrap */
+
+    /* --- Card Grid Spacing --- */
+    .market-updates .row {
+      margin-bottom: 15px; /* Reduce bottom margin for denser packing if many rows */
+    }
+    .market-update-gd {
+      padding-left: 10px; /* Adjust gutter for cards */
+      padding-right: 10px; /* Adjust gutter for cards */
+      margin-bottom: 20px; /* Space for stacked cards on mobile */
+    }
+
+    /* --- Market Update Block (Card) Base Style --- */
     .market-update-block {
-      padding: 2em 2em;
-      background: #999;
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-light);
+      padding: 20px 25px; /* Slightly adjusted padding */
+      display: flex;
+      align-items: center;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden; /* Important for pseudo-elements */
+      min-height: 140px; /* Consistent card height */
     }
 
-    .market-update-block h3 {
-      color: #fff;
-      font-size: 1.5em;
-      font-family: 'Carrois Gothic', sans-serif;
+    .market-update-block:hover {
+      transform: translateY(-7px) scale(1.015); /* More subtle scale */
+      box-shadow: var(--shadow-medium);
     }
 
-    .market-update-block h4 {
-      font-size: 1.2em;
-      color: #fff;
-      margin: 0.3em 0em;
-      font-family: 'Carrois Gothic', sans-serif;
+    /* Decorative Accent Bar on the Left */
+    .market-update-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 7px; /* Thickness of the bar */
+      height: 100%;
+      background-color: transparent; /* Base color set by specific card styles */
+      border-top-left-radius: var(--border-radius-lg);
+      border-bottom-left-radius: var(--border-radius-lg);
+      transition: opacity 0.3s ease;
+    }
+    .market-update-block:hover::before {
+      opacity: 0.8;
     }
 
-    .market-update-block p {
-      color: #fff;
-      font-size: 0.8em;
-      line-height: 1.8em;
+    /* --- Icon Wrapper Styling --- */
+    .market-update-icon-wrapper {
+      flex-shrink: 0; /* Prevent shrinking */
+      width: 70px;   /* Icon circle size */
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px; /* Space between icon circle and text */
+      background-color: #eee; /* Fallback/base, overridden by specific styles */
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    .market-update-block.clr-block-1 {
-      background: #ff0000;
-      margin-right: 0.8em;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    .market-update-icon-wrapper i.fa {
+      font-size: 2.5em; /* Icon size within the circle */
+      color: #fff; /* Icon color is white */
+      transition: transform 0.3s ease;
     }
 
-    .market-update-block.clr-block-2 {
-      background: #4f5905;
-      margin-right: 0.8em;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    .market-update-block:hover .market-update-icon-wrapper {
+      transform: scale(1.05); /* Icon circle slight zoom */
+    }
+    .market-update-block:hover .market-update-icon-wrapper i.fa {
+      transform: scale(1.1) rotate(-3deg); /* Icon subtle animation */
     }
 
-    .market-update-block.clr-block-3 {
-      background: #1355f9;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    /* --- Text Content Styling --- */
+    .market-update-content {
+      flex-grow: 1; /* Allow text content to take remaining space */
     }
 
-    .market-update-block.clr-block-1:hover {
-      background: #3C3C3C;
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    .market-update-content h3 { /* The actual data (e.g., doctor's name) */
+      font-family: var(--font-primary);
+      font-size: 1.8em; /* Data font size */
+      font-weight: 600;
+      margin: 0 0 3px 0;
+      line-height: 1.2;
+      color: var(--text-color-dark); /* Base color, overridden by specific styles */
     }
 
-    .market-update-block.clr-block-2:hover {
-      background: #3C3C3C;
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    .market-update-content h4 { /* The label (e.g., "Doctor Name") */
+      font-family: var(--font-secondary);
+      font-size: 0.9em; /* Label font size */
+      font-weight: 500;
+      color: var(--text-label-color);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
-    .market-update-block.clr-block-3:hover {
-      background: #3C3C3C;
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -o-transition: 0.5s all;
+    /* --- Color Variants for Cards --- */
+    /* Style 1 (e.g., User, Address - Blue theme) */
+    .market-update-block.clr-style-1::before,
+    .market-update-block.clr-style-1 .market-update-icon-wrapper {
+      background-color: var(--accent-color-1);
+    }
+    .market-update-block.clr-style-1:hover .market-update-icon-wrapper {
+      background-color: var(--accent-color-1-dark);
+    }
+    .market-update-block.clr-style-1 .market-update-content h3 {
+      color: var(--accent-color-1-dark);
     }
 
-    .market-update-right i.fa.fa-user-o,
-    i.fa.fa-map-marker {
-      font-size: 3em;
-      color: #68AE00;
-      width: 80px;
-      height: 80px;
-      background: #fff;
-      text-align: center;
-      border-radius: 49px;
-      -webkit-border-radius: 49px;
-      -moz-border-radius: 49px;
-      -o-border-radius: 49px;
-      line-height: 1.7em;
+    /* Style 2 (e.g., Symptoms, Department - Green theme) */
+    .market-update-block.clr-style-2::before,
+    .market-update-block.clr-style-2 .market-update-icon-wrapper {
+      background-color: var(--accent-color-2);
+    }
+    .market-update-block.clr-style-2:hover .market-update-icon-wrapper {
+      background-color: var(--accent-color-2-dark);
+    }
+    .market-update-block.clr-style-2 .market-update-content h3 {
+      color: var(--accent-color-2-dark);
     }
 
-    .market-update-right i.fa.fa-info-circle,
-    i.fa.fa-list-alt {
-      font-size: 3em;
-      color: #FC8213;
-      width: 80px;
-      height: 80px;
-      background: #fff;
-      text-align: center;
-      border-radius: 49px;
-      -webkit-border-radius: 49px;
-      -moz-border-radius: 49px;
-      -o-border-radius: 49px;
-      line-height: 1.7em;
+    /* Style 3 (e.g., Mobile, Date - Red/Orange theme) */
+    .market-update-block.clr-style-3::before,
+    .market-update-block.clr-style-3 .market-update-icon-wrapper {
+      background-color: var(--accent-color-3);
+    }
+    .market-update-block.clr-style-3:hover .market-update-icon-wrapper {
+      background-color: var(--accent-color-3-dark);
+    }
+    .market-update-block.clr-style-3 .market-update-content h3 {
+      color: var(--accent-color-3-dark);
     }
 
-    .market-update-right i.fa.fa-mobile,
-    i.fa.fa-calendar-o {
-      font-size: 3em;
-      color: #337AB7;
-      width: 80px;
-      height: 80px;
-      background: #fff;
-      text-align: center;
-      border-radius: 49px;
-      -webkit-border-radius: 49px;
-      -moz-border-radius: 49px;
-      -o-border-radius: 49px;
-      line-height: 1.7em;
-    }
-
-
-
-    .market-update-left {
-      padding: 0px;
-    }
   </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <div class="market-updates">
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-1">
-        <div class="col-md-8 market-update-left">
-          <h3>{{doctorName}}</h3>
-          <h4>Doctor Name</h4>
+  <div class="container"> <!-- You can use .container-fluid for full-width -->
+    <div class="market-updates">
+      <div class="row">
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-1">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-user-o"> </i>
+            </div>
+            <div class="market-update-content">
+              <h3>{{doctorName}}</h3>
+              <h4>Doctor Name</h4>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-user-o"> </i>
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-2">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-stethoscope"></i> <!-- More relevant icon -->
+            </div>
+            <div class="market-update-content">
+              <h3>{{symptoms}}</h3>
+              <h4>Symptoms</h4>
+            </div>
+          </div>
         </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-2">
-        <div class="col-md-8 market-update-left">
-          <h3>{{symptoms}}</h3>
-          <h4>Symptoms</h4>
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-3">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-mobile" aria-hidden="true"></i>
+            </div>
+            <div class="market-update-content">
+              <h3>{{doctorMobile}}</h3>
+              <h4>Doctor Mobile</h4>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-info-circle"></i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-3">
-        <div class="col-md-8 market-update-left">
-          <h3>{{doctorMobile}}</h3>
-          <h4>Doctor Mobile</h4>
-        </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-mobile" aria-hidden="true"></i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="clearfix"> </div>
-  </div>
+      </div> <!-- /.row -->
 
+      <div class="row">
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-1">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-map-marker"> </i>
+            </div>
+            <div class="market-update-content">
+              <h3>{{doctorAddress}}</h3>
+              <h4>Doctor Address</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-2">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-hospital-o"></i> <!-- More relevant icon -->
+            </div>
+            <div class="market-update-content">
+              <h3>{{doctorDepartment}}</h3>
+              <h4>Doctor Department</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 market-update-gd">
+          <div class="market-update-block clr-style-3">
+            <div class="market-update-icon-wrapper">
+              <i class="fa fa-calendar-o" aria-hidden="true"></i>
+            </div>
+            <div class="market-update-content">
+              <h3>{{admitDate}}</h3>
+              <h4>Admit Date</h4>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /.row -->
+    </div> <!-- /.market-updates -->
+  </div> <!-- /.container -->
 
-
-  <br><br><br>
-
-
-
-  <div class="market-updates">
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-1">
-        <div class="col-md-8 market-update-left">
-          <h3>{{doctorAddress}}</h3>
-          <h4>Doctor Address</h4>
-        </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-map-marker"> </i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-2">
-        <div class="col-md-8 market-update-left">
-          <h3>{{doctorDepartment}}</h3>
-          <h4>Doctor Department</h4>
-        </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-list-alt"></i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-3">
-        <div class="col-md-8 market-update-left">
-          <h3>{{admitDate}}</h3>
-          <h4>Admit Date</h4>
-        </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-calendar-o" aria-hidden="true"></i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-    </div>
-    <div class="clearfix"> </div>
-  </div>
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -6,12 +6,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Appointment Cards</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* General Styles */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f1f8ff;
+      font-family: 'Poppins', sans-serif;
+      background-color: transparent;
       margin: 0;
       padding: 0;
     }
@@ -19,101 +19,210 @@
     .grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 50px;
+      gap: 25px;
+      padding: 20px;
       justify-items: center;
     }
 
     .card {
-      background: linear-gradient(135deg, #66a3ff, #0059b3);
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 280px;
-      text-align: center;
-      color: white;
+      transition: all 0.3s ease;
+      width: 340px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
 
-    .card img {
-      width: 100%;
-      border-bottom: 4px solid #004c99;
+    .card-header {
+      padding: 25px 25px 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .card .title {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 15px 0;
-      color: #f2f2f2;
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      flex-shrink: 0;
     }
 
-    .card p {
-      font-size: 16px;
-      color: #d8d8d8;
+    .admin-card .icon-wrapper {
+      background: linear-gradient(135deg, #2196F3, #1976D2);
     }
 
-    button {
-      border: none;
-      outline: none;
-      background-color: #004c99;
+    .doctor-card .icon-wrapper {
+      background: linear-gradient(135deg, #E91E63, #C2185B);
+    }
+
+    .patient-card .icon-wrapper {
+      background: linear-gradient(135deg, #4CAF50, #388E3C);
+    }
+
+    .icon {
+      font-size: 24px;
       color: white;
-      font-size: 16px;
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .card-content {
+      padding: 20px 25px;
+      flex-grow: 1;
+    }
+
+    .card-description {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .features-list li {
+      color: #666;
+      font-size: 13px;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .features-list li i {
+      color: #4CAF50;
+      font-size: 12px;
+    }
+
+    .btn-view {
+      background: #f8f9fa;
+      color: #2c3e50;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 25px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #003366;
-    }
-
-    a:link,
-    a:visited {
+      transition: all 0.3s ease;
+      border: none;
       text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .admin-card .btn-view {
+      background: #2196F3;
       color: white;
     }
 
-    a:hover {
-      opacity: 0.8;
+    .doctor-card .btn-view {
+      background: #E91E63;
+      color: white;
+    }
+
+    .patient-card .btn-view {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .btn-view:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <div class="grid-container">
     <div class="grid-item">
-      <div class="card">
-        <img src="/static/images/admin.jpg" alt="Admin Image">
-        <p class="title">ADMIN</p>
-        <p><button><a href="/adminclick">View</a></button></p>
+      <div class="card admin-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <i class="fas fa-clipboard-list icon"></i>
+          </div>
+          <h3 class="card-title">ADMIN</h3>
+        </div>
+        <div class="card-content">
+          <p class="card-description">Comprehensive hospital management system for administrators</p>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Staff Management</li>
+            <li><i class="fas fa-check-circle"></i> Resource Allocation</li>
+            <li><i class="fas fa-check-circle"></i> System Monitoring</li>
+          </ul>
+          <a href="/adminclick" class="btn-view">Access Dashboard</a>
+        </div>
       </div>
     </div>
 
     <div class="grid-item">
-      <div class="card">
-        <img src="/static/images/doctor.jpg" alt="Doctor Image">
-        <p class="title">DOCTOR</p>
-        <p><button><a href="/doctorclick">View</a></button></p>
+      <div class="card doctor-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <i class="fas fa-user-md icon"></i>
+          </div>
+          <h3 class="card-title">DOCTOR</h3>
+        </div>
+        <div class="card-content">
+          <p class="card-description">Professional portal for medical practitioners</p>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Patient Records</li>
+            <li><i class="fas fa-check-circle"></i> Appointment Management</li>
+            <li><i class="fas fa-check-circle"></i> Medical Reports</li>
+          </ul>
+          <a href="/doctorclick" class="btn-view">Doctor Portal</a>
+        </div>
       </div>
     </div>
 
     <div class="grid-item">
-      <div class="card">
-        <img src="/static/images/patient.jpg" alt="Patient Image">
-        <p class="title">PATIENT</p>
-        <p><button><a href="/patientclick">View</a></button></p>
+      <div class="card patient-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <i class="fas fa-procedures icon"></i>
+          </div>
+          <h3 class="card-title">PATIENT</h3>
+        </div>
+        <div class="card-content">
+          <p class="card-description">Easy access to healthcare services</p>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Online Appointments</li>
+            <li><i class="fas fa-check-circle"></i> Medical History</li>
+            <li><i class="fas fa-check-circle"></i> Prescription Access</li>
+          </ul>
+          <a href="/patientclick" class="btn-view">Patient Portal</a>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>

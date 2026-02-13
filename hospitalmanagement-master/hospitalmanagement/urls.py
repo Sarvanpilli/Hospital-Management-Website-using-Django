@@ -1,7 +1,7 @@
-
 from django.contrib import admin
 from django.urls import path
 from hospital import views
+from hospital.views_chatbot import chatbot_response
 from django.contrib.auth.views import LoginView,LogoutView
 
 
@@ -9,7 +9,7 @@ from django.contrib.auth.views import LoginView,LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
-
+    path('chatbot/', chatbot_response, name='chatbot_response'),
 
     path('aboutus', views.aboutus_view),
     path('contactus', views.contactus_view),

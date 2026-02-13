@@ -144,3 +144,6 @@ EMAIL_HOST_PASSWORD = 'xyz' # host email password required
 # otherwise you will get SMTPAuthenticationError at /contactus
 # this process is required because google blocks apps authentication by default
 EMAIL_RECEIVING_USER = ['to@gmail.com'] # email on which you will receive messages sent from website
+
+# Gemini Generative AI API Key
+GEMINI_API_KEY = 'AIzaSyBJpAIPzfmiPNftuKhJ4iL93YB1pBwwk3Q'

@@ -4,18 +4,258 @@
 
 <br><br>
 
-<!-- Jumbotron Section -->
-<div class="jumbotron" style="background-color: #f8f9fa; padding: 60px 30px; border-radius: 10px; margin-bottom: 0px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-  <h1 class="display-4" style="text-align: center; font-size: 3rem; font-weight: 700; color: #343a40;">Hello, Doctor</h1>
-  <p class="lead" style="text-align: center; font-size: 1.2rem; color: #6c757d;">Welcome to the Hospital Management System.</p>
-  <hr class="my-4" style="border-color: #dee2e6;">
-  <p style="text-align: center; font-size: 1.1rem; color: #6c757d;">You can access various features after Login/SignUp.</p>
-  
-  <!-- Buttons Section -->
-  <div class="text-center">
-    <a class="btn btn-primary btn-lg mx-3" href="/doctorsignup" role="button" style="padding: 12px 30px; font-size: 1.2rem; border-radius: 25px;">Apply</a>
-    <a class="btn btn-primary btn-lg mx-3" href="/doctorlogin" role="button" style="padding: 12px 30px; font-size: 1.2rem; border-radius: 25px;">Login</a>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Left Side - Welcome Message -->
+    <div class="col-md-6 left-section">
+      <div class="welcome-content">
+        <h1 class="welcome-text">Welcome Doctor</h1>
+        <p class="subtitle">Provide quality healthcare services</p>
+      </div>
+    </div>
+
+    <!-- Right Side - Login/Signup -->
+    <div class="col-md-6 right-section">
+      <div class="auth-container">
+        <div class="auth-box">
+          <h2>Get Started</h2>
+          <div class="button-group">
+            <a href="/doctorsignup" class="auth-btn signup">
+              <span class="btn-content">
+                <i class="fas fa-user-md"></i>
+                <span>Apply Now</span>
+              </span>
+              <span class="btn-glow"></span>
+            </a>
+            <a href="/doctorlogin" class="auth-btn login">
+              <span class="btn-content">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Log In</span>
+              </span>
+              <span class="btn-glow"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Animated Background -->
+<div class="animated-background">
+  <div class="light x1"></div>
+  <div class="light x2"></div>
+  <div class="light x3"></div>
+  <div class="light x4"></div>
+  <div class="light x5"></div>
+</div>
+
+<style>
+  .container-fluid {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .row {
+  }
+
+  /* Left Section Styles */
+  .left-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .welcome-content {
+    text-align: center;
+  }
+
+  .welcome-text {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #337AB7;
+    margin-bottom: 1rem;
+    animation: slideIn 1s ease-out;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+    color: #666;
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  /* Right Section Styles */
+  .right-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .auth-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .auth-box h2 {
+    font-size: 2.5rem;
+    color: #337AB7;
+    margin-bottom: 2rem;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .auth-btn {
+    position: relative;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .auth-btn .btn-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .auth-btn .btn-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #337AB7, #286090);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .auth-btn:hover .btn-glow {
+    opacity: 1;
+  }
+
+  .signup {
+    background: #337AB7;
+    color: white;
+    box-shadow: 0 4px 15px rgba(51, 122, 183, 0.3);
+  }
+
+  .login {
+    background: white;
+    color: #337AB7;
+    border: 2px solid #337AB7;
+  }
+
+  .auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(51, 122, 183, 0.4);
+  }
+
+  /* Animated Background */
+  .animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .light {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(51, 122, 183, 0.08) 0%, rgba(51, 122, 183, 0) 70%);
+    border-radius: 50%;
+    animation: float 20s infinite;
+  }
+
+  .x1 { animation-delay: 0s; }
+  .x2 { animation-delay: 4s; }
+  .x3 { animation-delay: 8s; }
+  .x4 { animation-delay: 12s; }
+  .x5 { animation-delay: 16s; }
+
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(100px, 100px) scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+    
+    .left-section, .right-section {
+      width: 100%;
+    }
+
+    .welcome-text {
+      font-size: 3rem;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+    }
+  }
+</style>
 
 {% endblock content %}
